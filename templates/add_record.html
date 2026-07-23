@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Add Record</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Add Customer Record</h1>
+
+<form id="recordForm" method="post" action="/add">
+
+<input
+type="text"
+name="name"
+placeholder="Full Name"
+value="{{ record.name if record else '' }}"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+value="{{ record.email if record else '' }}"
+required>
+
+<input
+type="text"
+name="phone"
+placeholder="Phone Number"
+value="{{ record.phone if record else '' }}"
+required>
+
+<input
+type="text"
+name="address"
+placeholder="Address"
+value="{{ record.address if record else '' }}"
+required>
+
+<button type="submit">
+
+Validate Record
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/">← Back to Dashboard</a>
+
+</div>
+
+{% if status == "duplicate" %}
+
+<script>
+
+alert("{{ message }}");
+
+</script>
+
+{% endif %}
+
+{% if status == "warning" %}
+
+<script>
+
+let proceed = confirm(
+
+"{{ message }}\n\nWould you like to continue anyway?"
+
+);
+
+if(proceed){
+
+document.body.innerHTML += `
+
+<form id="confirmForm" method="post" action="/confirm">
+
+<input type="hidden" name="name" value="{{ record.name }}">
+
+<input type="hidden" name="email" value="{{ record.email }}">
+
+<input type="hidden" name="phone" value="{{ record.phone }}">
+
+<input type="hidden" name="address" value="{{ record.address }}">
+
+</form>
+
+`;
+
+document.getElementById("confirmForm").submit();
+
+}
+
+</script>
+
+{% endif %}
+
+{% if status == "success" %}
+
+<script>
+
+let confirmSave = confirm(
+
+"Please verify the information below.\n\n"
+
++
+
+"Name: {{ record.name }}\n"
+
++
+
+"Email: {{ record.email }}\n"
+
++
+
+"Phone: {{ record.phone }}\n"
+
++
+
+"Address: {{ record.address }}\n\n"
+
++
+
+"Press OK to save this record."
+
+);
+
+if(confirmSave){
+
+document.body.innerHTML += `
+
+<form id="confirmForm" method="post" action="/confirm">
+
+<input type="hidden" name="name" value="{{ record.name }}">
+
+<input type="hidden" name="email" value="{{ record.email }}">
+
+<input type="hidden" name="phone" value="{{ record.phone }}">
+
+<input type="hidden" name="address" value="{{ record.address }}">
+
+</form>
+
+`;
+
+document.getElementById("confirmForm").submit();
+
+}
+
+</script>
+
+{% endif %}
+
+</body>
+
+</html>
