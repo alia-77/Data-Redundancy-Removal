@@ -117,20 +117,6 @@ http://127.0.0.1:8000
 
 ---
 
-## Assignment Requirements Covered
-
-✔ Design a system that identifies and classifies redundant and possible false-positive data.
-
-✔ Validate new records against existing database records.
-
-✔ Prevent duplicate data from being inserted into the cloud database.
-
-✔ Store only unique and user-verified records.
-
-✔ Improve database accuracy by avoiding redundant information.
-
----
-
 ## Future Improvements
 
 - Persistent validation history and audit logs.
