@@ -57,7 +57,7 @@ Only verified, unique records are added to the database.
 ## Project Structure
 
 ```
-CodeAlpha_DataRedundancyRemoval/
+Data-Redundancy-Removal/
 │
 ├── app.py
 ├── database.py
@@ -79,8 +79,8 @@ CodeAlpha_DataRedundancyRemoval/
 Clone the repository:
 
 ```bash
-git clone https://github.com/alia-77/CodeAlpha_DataRedundancyRemoval.git
-cd CodeAlpha_DataRedundancyRemoval
+git clone https://github.com/alia-77/Data-Redundancy-Removal.git
+cd Data-Redundancy-Removal
 ```
 
 Create a virtual environment:
